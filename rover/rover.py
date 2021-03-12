@@ -26,7 +26,7 @@ def calculate_new_pos_vector(current_position, command):
             orientation = 'W'
         elif (command == 'L' and orientation == 'S') or (command == 'R' and orientation == 'N'):
             orientation = 'E'
-        return (x_coord, y_coord, orientation)
+        return wrap_around((x_coord, y_coord)) + (orientation,)
     else:
         print('Unrecognised command.')
 

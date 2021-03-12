@@ -1,5 +1,6 @@
 import pytest
-from rover.rover import generate_grid, calculate_new_pos_vector, wrap_around
+from rover.rover import generate_grid, calculate_new_pos_vector, wrap_around, \
+    begin_journey
 
 
 def test_generate_grid(grid_size, expected_grid):
@@ -50,3 +51,15 @@ def test_calculate_new_pos_vector_right_turn(
 )
 def test_wrap_around(off_grid_coords, expected_coords):
     assert wrap_around(off_grid_coords) == expected_coords
+
+
+def test_begin_journey(
+    rover_landing_position,
+    journey_commands,
+    expected_journey_path
+):
+    actual = begin_journey(
+        rover_landing_position, journey_commands
+    )
+    assert actual == expected_journey_path
+

@@ -18,6 +18,14 @@ def calculate_new_pos_vector(current_position, command):
             y_coord += 1
         elif (command == 'F' and orientation == 'N') or (command == 'B' and orientation == 'N'):
             y_coord -= 1
+        elif (command == 'L' and orientation == 'E') or (command == 'R' and orientation == 'W'):
+            orientation = 'N'
+        elif (command == 'L' and orientation == 'W') or (command == 'R' and orientation == 'E'):
+            orientation = 'S'
+        elif (command == 'L' and orientation == 'N') or (command == 'R' and orientation == 'S'):
+            orientation = 'W'
+        elif (command == 'L' and orientation == 'S') or (command == 'R' and orientation == 'N'):
+            orientation = 'E'
         return (x_coord, y_coord, orientation)
     else:
         print('Unrecognised command.')

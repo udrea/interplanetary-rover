@@ -45,7 +45,7 @@ def test_calculate_new_pos_vector_right_turn(
 
 @pytest.mark.parametrize(
     'off_grid_coords, expected_coords', [
-        ((4, 2), (0, 3)), ((-1, 2), (3, 2)), ((1, 6), (1, 0)), ((1, -1), (1, 5))
+        ((4, 2), (0, 2)), ((-1, 2), (3, 2)), ((1, 6), (1, 0)), ((1, -1), (1, 5))
     ]
 )
 def test_wrap_around(off_grid_coords, expected_coords):

@@ -56,10 +56,11 @@ def test_wrap_around(off_grid_coords, expected_coords):
 def test_begin_journey(
     rover_landing_position,
     journey_commands,
-    expected_journey_path
+    expected_journey_path,
+    fake_obstacles
 ):
     actual = begin_journey(
-        rover_landing_position, journey_commands
+        rover_landing_position, journey_commands, fake_obstacles
     )
     assert actual == expected_journey_path
 

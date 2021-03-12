@@ -48,12 +48,12 @@ def wrap_around(pos_coords):
         return pos_coords
 
 
-def begin_journey(landing_pos, commands):
+def begin_journey(landing_pos, commands, obstacles):
     pos_vec = landing_pos
     journey_history = [pos_vec]
 
-    obstacles = [(1, 1), (1, 2), (1, 3)]  # this is already pre-loaded
-    # print(f'Obstacles: {obstacles}')
+    # obstacles = [(1, 1), (1, 2), (1, 3)]  # this is already pre-loaded
+    print(f'Obstacles: {obstacles}')
 
     for command in commands:
         new_pos_vec = calculate_new_pos_vector(pos_vec, command)

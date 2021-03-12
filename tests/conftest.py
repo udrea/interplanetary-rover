@@ -79,3 +79,9 @@ def expected_journey_path():
         (2, 1, 'E'), (3, 1, 'E'), (2, 1, 'E'), (2, 1, 'N'), (2, 2, 'N'),
         (2, 3, 'N'), (2, 4, 'N'), (2, 5, 'N')
     ]
+
+@pytest.fixture
+def fake_obstacles():
+    return [
+        (1, 1), (1, 2), (1, 3)
+    ]

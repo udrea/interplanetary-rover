@@ -1,11 +1,14 @@
-from rover.rover import generate_grid, calculate_new_pos_vector, begin_journey
+from rover.rover import Rover
 
 
 if __name__ == '__main__':
-    landing_pos = (0, 0, 'E')
-    commands = ['F', 'F', 'L', 'F', 'R', 'F', 'B', 'L', 'F', 'F', 'F', 'F']
-    fake_obstacles = [(1, 1), (1, 2), (1, 3)]
-    real_obstacles = [(1, 1), (1, 2), (3, 1)]
+    grid_size = (4, 6)
+    landing_position = (1, 1, 'E')
+    journey_commands = ['F', 'F', 'L', 'F', 'R', 'F', 'B', 'L', 'F', 'F', 'F', 'F']
+    
+    rover = Rover(grid_size=grid_size, landing_position=landing_position)
+    print(f'Grid:\n{rover.grid}')
 
-    journey_history = begin_journey(landing_pos, commands, fake_obstacles)
-    print(f'Journey history:\n{journey_history}')
+    journey_history = rover.begin_journey(journey_commands)
+    
+    print(journey_history)

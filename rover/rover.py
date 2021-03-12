@@ -16,7 +16,7 @@ def calculate_new_pos_vector(current_position, command):
             x_coord -= 1
         elif (command == 'F' and orientation == 'N') or (command == 'B' and orientation == 'S'):
             y_coord += 1
-        elif (command == 'F' and orientation == 'N') or (command == 'B' and orientation == 'N'):
+        elif (command == 'F' and orientation == 'S') or (command == 'B' and orientation == 'N'):
             y_coord -= 1
         elif (command == 'L' and orientation == 'E') or (command == 'R' and orientation == 'W'):
             orientation = 'N'

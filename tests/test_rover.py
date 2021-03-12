@@ -1,5 +1,5 @@
 import pytest
-from rover.rover import generate_grid
+from rover.rover import generate_grid, calculate_new_pos_vector
 
 
 def test_generate_grid(grid_size, expected_grid):

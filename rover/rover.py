@@ -1,3 +1,5 @@
-def generate_grid(xlen, ylen):
-    rv = [(x, y) for x in range(xlen) for y in range(ylen)]
-    return rv
+from typing import List, Tuple
+
+
+def generate_grid(m: int, n: int) -> List[Tuple[int, int]]:
+    return [(x, y) for x in range(m) for y in range(n)]

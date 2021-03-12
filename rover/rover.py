@@ -1,8 +1,10 @@
 from typing import List, Tuple
 
 class PlanetGrid:
-    def __init__(self, grid_size) -> None:
-        self.m, self.n = grid_size
+    """Class responsible for setting up the planet grid
+    """
+    def __init__(self, grid_size: Tuple[int, int]) -> None:
+        self.m, self.n = grid_size  # number of rows/columns of grid
         self.grid = self.generate_grid()
 
     def generate_grid(self) -> List[Tuple[int, int]]:
@@ -16,20 +18,34 @@ class PlanetGrid:
 
 
 class Navigation(PlanetGrid):
+    """Rover navigation commands
+    """
     ALLOWED_COMMANDS = ['F', 'B', 'L', 'R']
 
-    def __init__(self, landing_position, *args, **kwargs) -> None:
+    def __init__(
+        self, landing_position: Tuple[int, int, str], *args, **kwargs
+    ) -> None:
         self.landing_position = landing_position
         super().__init__(*args, **kwargs)
 
     def is_landing_position_valid(self) -> bool:
+        """Check if landing position is inside the grid
+        """
         x_coord, y_coord, _ = self.landing_position
         if (x_coord, y_coord) in self.grid:
             return True
         else:
             return False
 
-    def calc_new_pos_vec(self, current_position, command):
+    def calc_new_pos_vec(
+        self, current_position: Tuple[int, int, str], command: str
+    ) -> Tuple[int, int, str]:
+        """Compute new position vector based on current position and command
+
+        Args:
+            current_position (Tuple[int, int, str]): Current rover position
+            command (str): Command to execute ('F', 'B', 'L' or 'R')
+        """
         if self.is_landing_position_valid():
             x_coord, y_coord, orientation = current_position
         else:
@@ -59,7 +75,12 @@ class Navigation(PlanetGrid):
         else:
             raise Exception('Unrecognised command.')
 
-    def wrap_around(self, pos_coords):
+    def wrap_around(self, pos_coords: Tuple[int, int]) -> Tuple[int, int]:
+        """Wrap around edges of grid if coordinates are outside
+
+        Args:
+            pos_coords (Tuple[int, int]): Position coordinates of rover
+        """
         m, n = max(self.grid)
         x_coord, y_coord = pos_coords
         
@@ -75,25 +96,31 @@ class Navigation(PlanetGrid):
             return pos_coords
 
 class Rover(Navigation):
-
+    """Class responsible for tracking rover movements
+    """
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-    def begin_journey(self, commands, obstacles):
+    def begin_journey(
+        self, commands: List[str], obstacles: List[Tuple[int, int]]
+    ) -> List[Tuple[int, int, str]]:
+        """Execute rover movement commands and track its journey
+
+        Args:
+            commands (List[str]): List of commands to execute
+            obstacles (List[Tuple[int, int]]): Obstacles on the planet
+        """
         pos_vec = self.landing_position
         journey_history = [pos_vec]
-        # obstacles = [(1, 4), (3, 1)]
-        # obstacles = [(1, 4)]
-        print(f'Obstacles: {obstacles}')
 
         for command in commands:
             new_pos_vec = self.calc_new_pos_vec(pos_vec, command)
-            if new_pos_vec[:2] in obstacles:
+            xy_coord_pair = new_pos_vec[:2]
+            if xy_coord_pair in obstacles:
                 print(f'Last position: {pos_vec}')
                 raise Exception(f'Encountered obstacle at position: {new_pos_vec}')
             else:
                 pos_vec = new_pos_vec
-                print(pos_vec)
                 journey_history.append(pos_vec)
         
         return journey_history

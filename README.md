@@ -21,3 +21,4 @@ As the Earth is not flat (although some people disagree with this statement), we
 There might be other better ways of achieving this but this was the first thing
 that popped in my head as it's the simplest and most rudimentary way of solving
 this.
+

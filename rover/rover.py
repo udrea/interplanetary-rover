@@ -46,3 +46,23 @@ def wrap_around(pos_coords):
         return (x_coord, 0)
     else:
         return pos_coords
+
+
+def begin_journey(landing_pos, commands):
+    pos_vec = landing_pos
+    journey_history = [pos_vec]
+
+    obstacles = [(1, 1), (1, 2), (1, 3)]  # this is already pre-loaded
+    # print(f'Obstacles: {obstacles}')
+
+    for command in commands:
+        new_pos_vec = calculate_new_pos_vector(pos_vec, command)
+        if new_pos_vec[:2] in obstacles:
+            print(f'Last position: {pos_vec}')
+            print(f'Journey history before halt: {journey_history}')
+            raise Exception(f'Encountered obstacle at position: {new_pos_vec}')
+        else:
+            pos_vec = new_pos_vec
+            journey_history.append(pos_vec)
+    
+    return journey_history

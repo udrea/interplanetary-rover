@@ -31,3 +31,18 @@ def calculate_new_pos_vector(current_position, command):
         print('Unrecognised command.')
 
 
+def wrap_around(pos_coords):
+    g = generate_grid(4, 6)
+    xlen, ylen = max(g)
+    x_coord, y_coord = pos_coords
+    
+    if x_coord > xlen:
+        return (0, y_coord)
+    elif x_coord < 0:
+        return (ylen, y_coord)
+    elif y_coord < 0:
+        return (x_coord, ylen)
+    elif y_coord > ylen:
+        return (x_coord, 0)
+    else:
+        return pos_coords

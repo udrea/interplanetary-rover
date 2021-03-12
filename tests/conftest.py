@@ -62,9 +62,15 @@ def right_turn_command():
 
 
 @pytest.fixture
-def journey_commands():
-    return ['F', 'F', 'L', 'F', 'R', 'F', 'B', 'L', 'F', 'F', 'F', 'F']
-
+def journey_commands(
+    forwards_command, backwards_command, left_turn_command, right_turn_command
+):
+    return [
+        forwards_command, forwards_command, left_turn_command,
+        forwards_command, right_turn_command, forwards_command,
+        backwards_command, left_turn_command, forwards_command,
+        forwards_command, forwards_command, forwards_command
+    ]
 
 @pytest.fixture
 def expected_journey_path():

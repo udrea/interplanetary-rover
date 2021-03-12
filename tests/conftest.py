@@ -85,3 +85,19 @@ def fake_obstacles():
     return [
         (1, 1), (1, 2), (1, 3)
     ]
+
+
+@pytest.fixture
+def real_obstacles():
+    return [
+        (1, 1), (1, 2), (3, 1)
+    ]
+
+
+@pytest.fixture
+def expected_journey_path_obstacles():
+    return [
+        (0, 0, 'E'), (1, 0, 'E'), (2, 0, 'E'), (2, 0, 'N'), (2, 1, 'N'),
+        (2, 1, 'E')
+    ]
+

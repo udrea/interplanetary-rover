@@ -46,7 +46,8 @@ def test_calculate_new_pos_vector_right_turn(
 
 @pytest.mark.parametrize(
     'off_grid_coords, expected_coords', [
-        ((4, 2), (0, 2)), ((-1, 2), (3, 2)), ((1, 6), (1, 0)), ((1, -1), (1, 5))
+        ((4, 2), (0, 2)), ((-1, 2), (3, 2)),
+        ((1, 6), (1, 0)), ((1, -1), (1, 5))
     ]
 )
 def test_wrap_around(off_grid_coords, expected_coords):
@@ -64,3 +65,15 @@ def test_begin_journey(
     )
     assert actual == expected_journey_path
 
+
+def test_begin_journey_obstacles(
+    rover_landing_position,
+    journey_commands,
+    real_obstacles
+):
+    with pytest.raises(Exception) as excinfo:
+        begin_journey(
+            rover_landing_position, journey_commands, real_obstacles
+        )
+    
+    assert "(3, 1, 'E')" in str(excinfo.value)

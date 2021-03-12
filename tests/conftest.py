@@ -40,3 +40,8 @@ def expected_pos_after_left_cmd():
 def expected_pos_after_right_cmd():
     return (0, 0, 'S')
 
+
+@pytest.fixture
+def forwards_command():
+    return 'F'
+

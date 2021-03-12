@@ -16,6 +16,8 @@ class PlanetGrid:
 
 
 class Navigation(PlanetGrid):
+    ALLOWED_COMMANDS = ['F', 'B', 'L', 'R']
+
     def __init__(self, landing_position, *args, **kwargs) -> None:
         self.landing_position = landing_position
         super().__init__(*args, **kwargs)
@@ -73,16 +75,15 @@ class Navigation(PlanetGrid):
             return pos_coords
 
 class Rover(Navigation):
-    ALLOWED_COMMANDS = ['F', 'B', 'L', 'R']
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
-    def begin_journey(self, commands):
+    def begin_journey(self, commands, obstacles):
         pos_vec = self.landing_position
         journey_history = [pos_vec]
-        # obstacles = [(1, 4), (3, 5)]
-        obstacles = [(1, 4)]
+        # obstacles = [(1, 4), (3, 1)]
+        # obstacles = [(1, 4)]
         print(f'Obstacles: {obstacles}')
 
         for command in commands:

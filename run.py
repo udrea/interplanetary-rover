@@ -7,6 +7,5 @@ if __name__ == '__main__':
     fake_obstacles = [(1, 1), (1, 2), (1, 3)]
     real_obstacles = [(1, 1), (1, 2), (3, 1)]
 
-    journey_history = begin_journey(landing_pos, commands, real_obstacles)
+    journey_history = begin_journey(landing_pos, commands, fake_obstacles)
     print(f'Journey history:\n{journey_history}')
-    

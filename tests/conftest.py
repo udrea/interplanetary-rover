@@ -1,4 +1,23 @@
 import pytest
+from rover.rover import Navigation, PlanetGrid, Rover
+
+
+@pytest.fixture
+def planet_grid(grid_size):
+    planet_grid = PlanetGrid(grid_size)
+    return planet_grid
+
+
+@pytest.fixture
+def navigation(rover_landing_position, grid_size):
+    navigation = Navigation(rover_landing_position, grid_size)
+    return navigation
+
+
+@pytest.fixture
+def rover(grid_size, rover_landing_position):
+    rover = Rover(grid_size=grid_size, landing_position=rover_landing_position)
+    return rover
 
 
 @pytest.fixture

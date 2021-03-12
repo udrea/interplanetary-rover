@@ -22,3 +22,8 @@ There might be other better ways of achieving this but this was the first thing
 that popped in my head as it's the simplest and most rudimentary way of solving
 this.
 
+## Potential improvements
+- Split and perhaps simplify `Navigation.calc_new_pos_vec()`. Not particularly pleased with this implementation.
+- Review the boundary conditions and make sure no conditions were missed as I'm sure there were things I missed.
+- Better error handling by writing custom Exceptions
+

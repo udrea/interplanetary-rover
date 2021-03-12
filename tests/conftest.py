@@ -60,3 +60,22 @@ def left_turn_command():
 def right_turn_command():
     return 'R'
 
+
+@pytest.fixture
+def off_grid_yaxis_pos_coord():
+    return (1, 6)
+
+
+@pytest.fixture
+def off_grid_xaxis_pos_coord():
+    return (4, 2)
+
+
+@pytest.fixture
+def expected_yaxis_wrapped_coord():
+    return (0, 2)
+
+
+@pytest.fixture
+def expected_xaxis_wrapped_coord():
+    return (1, 0)

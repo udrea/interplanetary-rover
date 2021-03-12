@@ -43,8 +43,10 @@ def test_calculate_new_pos_vector_right_turn(
     assert expected_pos_after_right_cmd == actual
 
 
-def test_wrap_around_yaxis(
-    expected_yaxis_wrapped_coord, off_grid_yaxis_pos_coord
-):
-    actual = wrap_around(off_grid_yaxis_pos_coord)
-    assert expected_yaxis_wrapped_coord == actual
+@pytest.mark.parametrize(
+    'off_grid_coords, expected_coords', [
+        ((4, 2), (0, 3)), ((-1, 2), (3, 2)), ((1, 6), (1, 0)), ((1, -1), (1, 5))
+    ]
+)
+def test_wrap_around(off_grid_coords, expected_coords):
+    assert wrap_around(off_grid_coords) == expected_coords

@@ -45,3 +45,18 @@ def expected_pos_after_right_cmd():
 def forwards_command():
     return 'F'
 
+
+@pytest.fixture
+def backwards_command():
+    return 'B'
+
+
+@pytest.fixture
+def left_turn_command():
+    return 'L'
+
+
+@pytest.fixture
+def right_turn_command():
+    return 'R'
+
